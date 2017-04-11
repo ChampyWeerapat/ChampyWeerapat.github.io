@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Register</title>
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	<script language="javascript">
+
+		var allID = ["firstname", "lastname", "address", "city", "province", "zipcode", "housenumber", 
+					"cellphonenumber", "date", "txtID", "zodiacsign", "zodiacyear", "dayofbirth"];
+		var stateID = false;
+		var stateSubmit = false;
+
+		window.onload = function() {
+			if (document.cookie != "") {
+				var tmpInput = document.cookie.split(";");
+  				var input1, input2;
+  				for (i = 0; i < tmpInput.length; i++) {
+	  				tmpInput[i] = tmpInput[i].trim();
+	  				input1 = tmpInput[i].split("=")[0];
+	  				input2 = tmpInput[i].split("=")[1];
+  					if (input1 == "stateSubmit" && input2 == "true") {
+  						stateSubmit = true;
+  					} else if (!stateSubmit) {
+  						document.getElementById(allID[i]).value = input2;
+  					}
+  				}
+  				if (stateSubmit) {
+  					fillTable();
+  				}
+			}
+		}
+
+		function checkID(id) {
+    		if(id.length != 13) {
+    			return false;
+    		}
+    		for(i = 0, sum = 0; i < 12; i++) {
+				sum += parseFloat(id.charAt(i))*(13 - i);
+    		}
+    		if((11 - sum % 11) % 10 != parseFloat(id.charAt(12))) {
+    			return false;
+    		}
+    		return true;
+    	}
+
+    	function checkForm() {
+    		if(!checkID(document.formregister.txtID.value)) {
+        		document.getElementById("checkID").innerHTML = "<img src='img/wrong.png' alt='correct' class='mark'> Incorrect ID";
+        		stateID = false;
+    		} else {
+        		document.getElementById("checkID").innerHTML = "<img src='img/correct.png' alt='correct' class='mark'> Correct ID";
+        		stateID = true;
+    		}
+		}
+
+		function allLetter(inputtxt) {
+   			var letters = /^[A-Za-z]+$/;
+   			if(inputtxt.value.match(letters)) {
+      			return true;
+     		} else {
+     			inputtxt.value = inputtxt.value.substring(0, inputtxt.value.length - 1);
+     			return false;
+     		}
+  		}
+
+  		function allDigit(inputtxt) {
+  			var digits = /^[0-9+-]+$/;
+   			if(inputtxt.value.match(digits)) {
+      			return true;
+     		} else {
+     			inputtxt.value = inputtxt.value.substring(0, inputtxt.value.length - 1);
+     			return false;
+     		}
+  		}
+
+  		function toSaveInput() {
+  			for (i = 0; i < allID.length; i++) {
+  				document.cookie = allID[i] + "=" + document.getElementById(allID[i]).value;
+  			}
+  			alert("Data has been saved.");
+  		}
+
+  		function toClearInput() {
+  			document.getElementById('form').reset();
+  			alert("Data has been cleared.");
+  		}
+
+  		function toSubmitInput() {
+  			var state = 1;
+  			for (i = 0; i < allID.length; i++) {
+  				if (document.getElementById(allID[i]).value == "") {
+  					alert("Invalid input.");
+  					state = 0;
+  					return;
+  				}
+  			}
+  			if (state && stateID) {
+  				document.cookie = "stateSubmit=true";
+  				toSaveInput();
+  				confirm(document.cookie);
+  				fillTable();
+  				location.reload();
+  			} else {
+  				alert("Please check your ID.");
+  			}
+  		}
+
+  		function fillTable() {
+  			var tmpInput = document.cookie.split(";");
+  			var allInput1, allInput2;
+  			var codeTable = "<table class='result'><tr><th>id</th><th>value</th></tr>";
+  			for (i = 0; i < tmpInput.length; i++) {
+  				tmpInput[i] = tmpInput[i].trim();
+  				allInput1 = tmpInput[i].split("=")[0];
+  				allInput2 = tmpInput[i].split("=")[1];
+  				if (allInput1 != "stateSubmit") {
+  					codeTable += "<tr><td>" + allInput1 + "</td><td>" + allInput2 + "</td></tr>";
+  				}
+  			}
+  			codeTable += "</table>";
+  			document.getElementById("result").innerHTML = codeTable;
+  		}
+	</script>
+</head>
+<body>
+	<section>
+		<header role="banner">
+			
+		</header>
+	</section>
+	<p class="headerBody">Create your Account</p>
+
+	<div class="profileImage">
+		<img src="img/profileIcon2.png" alt="profile-icon">
+	</div>
+
+	<form action="" name="formregister" id="form">
+		<fieldset class="fieldset">
+		<!-- <legend>Register</legend> -->
+			Name:<br>
+			<input type="text" name="firstname" id="firstname" placeholder="Firstname" oninput="allLetter(document.formregister.firstname)">
+			<input type="text" name="lastname" id="lastname" placeholder="Lastname" oninput="allLetter(document.formregister.lastname)">
+			<br>
+			<br>
+
+			Address:<br>
+			<textarea rows="3" cols="32" name="address" id="address" placeholder="e.g. 1/234"></textarea>
+			<table class="addressTable">
+				<tr>
+					<td>City: </td>
+					<td><input type="text" name="city" id="city" placeholder="City"></td>
+
+				</tr>
+				<tr>
+					<td>Province: </td>
+					<td><input type="text" name="province" id="province" placeholder="Province"></td>
+				</tr>
+			<tr>
+					<td>Zipcode: </td>
+					<td><input type="text" name="zipcode" id="zipcode" placeholder="Zipcode" oninput="allDigit(document.formregister.zipcode)"></td>
+				</tr>
+			</table>
+			<br>
+
+			Phone number:<br>
+			<input type="text" name="housenumber" id="housenumber" placeholder="+662‐xxx‐xxxx" maxlength="13" oninput="allDigit(document.formregister.housenumber)">
+			</td>
+			<br>
+			<br>
+
+			Cell phone number:<br>
+			<input type="text" name="cellphonenumber" id="cellphonenumber" placeholder="+66xx‐xxx‐xxxx" maxlength="14" oninput="allDigit(document.formregister.cellphonenumber)">
+			<br>
+			<br>
+
+			Birthday:<br>
+			<input type="date" id="date">
+			<br>
+			<br>
+
+			Citizenship number:<br>
+			<input type="text" name="txtID" id="txtID" placeholder="13 digits" onblur="checkForm(); return false;" maxlength="13	">
+			<span id="checkID"></span>
+			<br>
+			<br>
+
+			Zodiac Sign:<br>
+			<select name="zodiacsign" id="zodiacsign">
+				<option value="Aries">Aries</option>
+				<option value="Taurus">Taurus</option>
+				<option value="Gemini">Gemini</option>
+				<option value="Cancer">Cancer</option>
+				<option value="Leo">Leo</option>
+				<option value="Virgo">Virgo</option>
+				<option value="Libra">Libra</option>
+				<option value="Scorpio">Scorpio</option>
+				<option value="Sagittarius">Sagittarius</option>
+				<option value="Capricorn">Capricorn</option>
+				<option value="Aquarius">Aquarius</option>
+				<option value="Pisces">Pisces</option>
+			</select>
+			<br>
+			<br>
+
+			Zodiac Year:<br>
+			<select name="zodiacyear" id="zodiacyear">
+				<option value="Rat">Rat</option>
+				<option value="Ox">Ox</option>
+				<option value="Tiger">Tiger</option>
+				<option value="Rabbit">Rabbit</option>
+				<option value="Dragon">Dragon</option>
+				<option value="Snake">Snake</option>
+				<option value="Horse">Horse</option>
+				<option value="Sheep">Sheep</option>
+				<option value="Monkey">Monkey</option>
+				<option value="Rooster">Rooster</option>
+				<option value="Dog">Dog</option>
+				<option value="Pig">Pig</option>
+			</select>
+			<br>
+			<br>
+
+			Birth Day of week:<br>
+			<select name="dayofbirth" id="dayofbirth">
+				<option value="Sunday">Sunday</option>
+				<option value="Monday">Monday</option>
+				<option value="Tuesday">Tuesday</option>
+				<option value="Wednesday">Wednesday</option>
+				<option value="Thursday">Thursday</option>
+				<option value="Friday">Friday</option>
+				<option value="Saturday">Saturday</option>
+			</select>
+			<br>
+			<br>
+			<input type="button" name="save" value="Save" onclick="toSaveInput()">
+			<input type="button" name="clear" value="Clear" onclick="toClearInput()">
+			<input type="button" name="submit" value="Submit" onclick="toSubmitInput()">
+
+		</fieldset>
+	</form>
+
+	<div id="result">
+	</div>
+</body>
+</html>
