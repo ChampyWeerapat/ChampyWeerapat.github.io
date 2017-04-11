@@ -1,0 +1,96 @@
+body {
+	margin: 0px 0px 10px 0px;
+	background-color: #ffffff;
+}
+
+header {	
+	height: 200px;
+	background-image: url(img/view.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	margin: 0px 0px 10px 0px;
+	border: 0;
+	padding: 0;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+form {
+	display: inline;
+	float: left;
+}
+
+.headerBody {
+	font-size: 48px;
+	text-align: center;
+	font-family: 'Open Sans', arial;
+	color: #555;
+}
+
+.btn:hover {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.btn-cancel {
+	color: #FFFFFF;
+	font-size: 18px;
+	background-color: #FF4343;
+	border: none;
+	vertical-align: center;
+	padding: 6px 16px;
+}
+
+.btn-submit {
+	color: #FFFFFF;
+	font-size: 18px;
+	background-color: #4CAF50;
+	border: none;
+	vertical-align: center;
+	padding: 6px 16px;
+}
+
+.greeting {
+	text-align: center;
+}
+
+.signImg {
+	clear: both;
+	float: left;
+	margin: 0;
+	display: inline;
+}
+.signImg img {
+	float: left;
+	margin-left: 200px;
+	margin-top: 25px;
+	width: 300px;
+	height: 300px;
+	opacity: 0;
+}
+
+.motto {
+	clear: both;
+	float: left;
+	margin: 0;
+	display: inline;
+}
+.motto-result {
+	float: left;
+	margin-left: 20px;
+	text-align: center;
+	background-color: #eeeeee;
+	padding: 5px;
+	opacity: 0;
+}
+
+.fieldset {
+	width: 360px;
+	clear: both;
+	margin-top: 25px;
+	margin-left: 250px;
+	margin-bottom: 20px;
+	font-size: 16px;
+	background-color: #eeeeee;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+}
