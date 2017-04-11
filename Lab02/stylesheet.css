@@ -1,0 +1,179 @@
+body {
+	background-color: #e8f5e9;
+	margin: 0;
+}
+
+h3 { 
+	font: italic normal 1.4em georgia, sans-serif;
+	letter-spacing: 1px; 
+	margin-bottom: 0;
+	padding-left: 10px;
+	color: #ff6d00;
+}
+
+a:link { 
+	font-weight: bold;
+	text-decoration: underline; 
+	color: #2980B9;
+}
+a:visited { 
+	font-weight: bold; 
+	text-decoration: underline; 
+	color: #A569BD;
+}
+a:hover, a:focus, a:active { 
+	text-decoration: underline; 
+	color: #ff6d00;
+}
+
+header {
+	height: 300px;
+	background-image: url(img/bgForest.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-color: #cccccc;
+	line-height: 50px;
+	margin: 0;
+	border: 0;
+	padding: 0;
+}
+header h1 {
+	font-size: 100px;
+	text-align: right;
+	font-family: Georgia;
+	margin: 0;
+	padding-top: 1.7em;
+	padding-right: 0.2em;
+}
+header h2 {
+	font-size: 20px;
+	font-family: Lucida Calligraphy;
+	text-align: right;
+	margin-top: 0;
+	padding-right: 22px;
+}
+
+footer {
+	margin-top: 10px;
+	text-align: center;
+}
+footer .zen-validate-html {
+	content: url(img/html5Logo.png);
+	width: 10%;
+	height: 10%;
+}
+footer .zen-validate-css {
+	content: url(img/css3Logo.png);
+	width: 7%;
+	height: 7%;
+}
+footer .zen-license {
+	content: url(img/ccLogo.png);
+	width: 9%;
+	height: 9%;
+}
+footer .zen-accessibility {
+	content: url(img/allyLogo.png);
+	width: 15%;
+	height: 15%;
+}
+footer .zen-github {
+	content: url(img/githubLogo.png);
+	width: 25%;
+	height: 25%;
+	padding-bottom: 15px;
+}
+
+.page-wrapper {
+	background-image: url(img/bgBody.png);
+	/*background-repeat: no-repeat;*/
+	background-size: 100%;
+}
+.article {
+	margin-top: 10px;
+	margin-left: 210px;
+	margin-right: 250px;
+}
+.summary {
+	clear: both; 
+	margin: 20px 10px 20px 10px; 
+	width: 160px;
+	float: left;
+	padding: 10px;
+	border: 5px solid;
+	border-radius: 20px;
+	border-color: #81c784;
+	background-color: #c8e6c9;
+}
+.preamble {
+	clear: right; 
+	padding: 0px 10px 0 10px;
+	margin-top: 10px;
+	border: 3px solid;
+	border-radius: 20px;
+	border-color: #81c784;
+	background-color: #c8e6c9;
+}
+.preamble p {
+	margin-top: 0;
+	text-indent: 20px;
+}
+.supporting {
+	padding-bottom: 10px;
+}
+.supporting p {
+	margin-top: 0;
+	padding: 10px;
+	text-indent: 20px;
+}
+.explanation, .participation, .benefits, .requirements {
+	clear: right;
+	margin-top: 10px;
+	border: 3px solid;
+	border-radius: 20px;
+	border-color: #81c784;
+	background-color: #c8e6c9;
+}
+
+.sidebar {
+	margin-left: 600px;
+	margin-top: 320px;
+	margin-right: 30px;
+	position: absolute; 
+	top: 0; 
+	right: 0;
+}
+
+.sidebar h3 {
+	color: #ff6d00;
+}
+.sidebar .wrapper {
+	font: 12px verdana, sans-serif; 
+	float: right;
+	position: relative;
+	width: 180px;
+	border: 3px solid;
+	border-radius: 20px;
+	border-color: #81c784;
+	background-color: #c8e6c9;
+	font-family: Georgia;
+}
+.sidebar ul {
+	margin: 0;
+	padding: 0;
+}
+.sidebar li {
+	line-height: 1.3em; 
+	background: transparent url(http://csszengarden.com/001/cr1.gif) no-repeat top left; 
+	display: block; 
+	padding-top: 5px;
+	padding-left: 5px;
+	margin-bottom: 5px;
+	list-style-type: none;
+}
+.sidebar li a:link {
+	color: #2980B9;
+}
+.sidebar li a:visited {
+	color: #A569BD;
+}
